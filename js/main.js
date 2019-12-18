@@ -12,7 +12,9 @@
     let mainContent = document.querySelector('.main-content');
     let main = document.querySelector('main');
     let abPic = document.querySelector('.picture-overlay')
-    let logo = document.querySelector('.logo');
+    let logo = document.querySelector('.logo'); 
+    let amContent = document.querySelector('.am-content-container');
+    let amPicture = document.querySelector('.am-picture-container');
 
     let options = {
       root: null,
@@ -81,6 +83,8 @@
         main.classList.add('set-right');
         setTimeout(function() {
           nav.classList.remove('no-opacity');
+          amContent.classList.remove('no-opacity','right-20');
+          amPicture.classList.remove('no-opacity','left-20');
         }, 1000)
       }, 300);
       observer.observe(mainContent);
