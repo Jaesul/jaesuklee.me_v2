@@ -63,16 +63,15 @@ button:focus {
 .splash-pg img {
   width: 100%;
   height: auto;
-  position: relative;
 }
 
 .splash-overlay {
   font-weight: 300;
   position: absolute;
   top: 0;
-  right: -24vw;
+  right: -25vw;
   background-color: rgba(255, 255, 255, 1);
-  width: 24vw;
+  width: 25vw;
   height: 100%;
   min-width: 240px;
   transition: all 1s ease-in-out;
@@ -95,9 +94,9 @@ button:focus {
 .splash-overlay h1 {
   width: 100%;
   margin: 1.3em 0 0 0;
-  font-size: 2.7em;
+  font-size: 3.5em;
   text-align: center;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .portfolio-btn {
@@ -117,12 +116,13 @@ button:focus {
 
 .splash-overlay h2 {
   font-weight: 400;
-  font-size: 1em;
+  font-size: 1.5em;
   width: 100%;
+  padding: 0.6em;
 }
 
 .splash-overlay strong {
-  font-weight: 100;
+  font-weight: 300;
 }
 
 main {
@@ -140,7 +140,6 @@ main {
 .main-content {
   box-sizing: border-box;
   margin-top: 3px;
-  padding: 4.5em 5.2em;
   position: relative;
   width: 100%;
   z-index: 10;
@@ -170,7 +169,7 @@ nav a {
 }
 
 nav a::after {
-  margin-top: 3px;
+  margin-top: 5px;
   content: '';
   display: block;
   width: 0%;
@@ -188,7 +187,7 @@ nav a:hover {
 }
 
 nav a:hover::after {
-  width: 96%;
+  width: 98%;
 }
 
 nav ul {
@@ -218,15 +217,20 @@ nav li:nth-last-child(1) {
 }
 
 .nav-scrolled {
-  background-color: rgb(60, 60, 60);;
+  background-color: rgb(255, 255, 255);;
   padding: 0.95em 3em;
-  color: white;
+  color: rgb(80, 80, 80);
 }
 
 section {
   min-height: 100vh;
   width: 100%;
   background-color: white;
+}
+
+section:nth-child(even) {
+  background-color: rgb(60, 60, 60);
+  color: white
 }
 
 .portfolio-btn:hover {
@@ -254,24 +258,41 @@ section {
 }
 
 #about-me {
-  padding: 3em 0; 
+  box-sizing: border-box;
+  height: 100%;
+  padding: 6em 0 5em 0; 
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 2vw;
-  height: 70vh;
+  grid-template-columns: repeat(30, 1fr);
+  grid-template-rows: repeat(12, 1fr);
 }
 
 .am-picture-container {
-  display: grid;
-  grid-template-rows: repeat(18, 1fr);
-  grid-template-columns: repeat(18, 1fr);
+  grid-row: 2/12;
+  grid-column: 5/11;
 }
 
-.am-picture-container .picture {
-  z-index: 100;
-  grid-row: 1/18;
-  grid-column: 1/18;
-  position: relative;
+.am-content-container {
+  grid-row: 3/11;
+  grid-column: 13/27;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.am-content-container h2 {
+  font-size: 2.5em;
+}
+
+.am-content-container p {
+  color: rgb(80, 80, 80);
+  font-size: 1.1em;
+  line-height: 1.8em;
+}
+
+.am-picture-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .am-picture-container .background {
@@ -326,5 +347,5 @@ section {
 }
 
 .slide-top {
-  transform: translate3d(0, -105%, 0);
+  transform: translate3d(0, -100%, 0);
 }

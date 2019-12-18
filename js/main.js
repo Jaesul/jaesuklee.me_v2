@@ -3,6 +3,8 @@
 
   window.addEventListener("load", init);
 
+  let NAV_TIMEOUT;
+
   function init() {
     let splashOverlay = document.querySelector('.splash-overlay');
     splashOverlay.classList.add('set-right');   
@@ -21,14 +23,22 @@
     let previousY = 0;
 
     let toggleNavState = () => {
-      if(main.scrollTop > nav.clientHeight) {
+      if (main.scrollTop > nav.clientHeight * 3) {
         if (previousY > main.scrollTop) {
           nav.classList.remove('slide-top');
+          clearInterval(NAV_TIMEOUT);
+          NAV_TIMEOUT = setTimeout(() => {
+            nav.classList.add('slide-top');
+          }, 1000);
         } else if (previousY < main.scrollTop) {
           nav.classList.add('slide-top');
         }
+      } else if (NAV_TIMEOUT) {
+        clearTimeout(NAV_TIMEOUT);
+      } else { 
+        nav.classList.remove('slide-top')
       }
-    };
+    };    
 
     setInterval(() => {
       if (main.scrollTop != previousY) {
@@ -48,6 +58,14 @@
           } else {
             nav.classList.add('nav-scrolled');
             logo.src = 'imgs/icons/logo-icon-white.svg';
+            nav.addEventListener('mouseenter', () => {
+              clearTimeout(NAV_TIMEOUT);
+            });
+            nav.addEventListener('mouseleave', () => {
+              NAV_TIMEOUT = setTimeout(() => {
+                nav.classList.add('slide-top');
+              }, 1000);
+            });
           } 
         });
       }, options);
@@ -67,45 +85,5 @@
       }, 300);
       observer.observe(mainContent);
     });
-
-    let carousel = document.querySelector('.img-slider');
-    let carosuelImgs = document.querySelectorAll('.img-slider img');
-
-    let firstClone = document.getElementById('first-clone');
-    let lastClone = document.getElementById('last-clone');
-
-    let prevBtn = document.getElementById('prev');
-    let nextBtn = document.getElementById('next');
-
-    let counter = 1;
-    let size = carousel.clientWidth;
-
-    carousel.style.transform = 'translateX(-' + (counter * size) +'px)';
-
-    nextBtn.addEventListener('click', ()=>{
-      if (counter >= carosuelImgs.length - 1) return;
-      carousel.style.transition = 'transform 0.3s ease-in-out';
-      counter++;
-      carousel.style.transform = 'translateX(-' + (counter * size) +'px)';
-    })
-
-    prevBtn.addEventListener('click', ()=> {
-      if (counter <= 0) return;
-      carousel.style.transition = 'transform 0.3s ease-in-out';
-      counter--;
-      carousel.style.transform = 'translateX(-' + (counter * size) +'px)';
-    })
-
-    carousel.addEventListener('transitionend', () => {
-      if(carosuelImgs[counter].id === 'first-clone') {
-        counter = 1;
-        carousel.style.transition = 'none';
-        carousel.style.transform = 'translateX(-' + (counter * size) +'px)';
-      } else if (carosuelImgs[counter].id === 'last-clone') {
-        counter = carosuelImgs.length - 2;
-        carousel.style.transition = 'none';
-        carousel.style.transform = 'translateX(-' + (counter * size) +'px)';
-      }
-    })
   }
 })();
