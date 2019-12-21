@@ -199,7 +199,7 @@ nav a::after {
 }
 
 nav a:visited {
-  color: inherit;
+  color: rgb(40, 40, 40);
 }
 
 nav a:hover {
