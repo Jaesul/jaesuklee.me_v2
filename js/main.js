@@ -13,9 +13,9 @@
     let amContent = document.querySelector('.am-content-container');
     let amPicture = document.querySelector('.am-picture-container');
     let technologyContainers = document.querySelectorAll('.technology-container');
-    let technologies = document.querySelector('#technologies');
-    let technologiesH2 = technologies.querySelector('h2');
+    let h2s = document.querySelectorAll('.title');
     let technologyItem = document.querySelectorAll('.technology-item');
+    let projects = document.querySelectorAll('.project-item');
 
 
     technologyItem.forEach(thing => {
@@ -31,7 +31,8 @@
     }
 
     let options2 = {
-      rootMargin: '0px 0px -17% 0px'
+      rootMargin: '0px 0px 0px 0px',
+      threshold: 0.63
     }
 
     let previousY = 0;
@@ -87,7 +88,10 @@
     let technologyItemTimeout = (item, time) => {
       setTimeout(function() {
         item.classList.remove('top-20', 'no-opacity');
-      }, 200 * time);
+        setTimeout(() => {
+          item.classList.add('opacity-hover');
+        }, 500);
+      }, 120 * time);
     };
 
     let technologyObserver = new IntersectionObserver(
@@ -132,7 +136,12 @@
       technologyContainers.forEach(container => {       
         technologyObserver.observe(container)
       });
-      titleObserver.observe(technologiesH2);
+      h2s.forEach(element => {
+        titleObserver.observe(element);
+      });
+      projects.forEach(element => {
+        titleObserver.observe(element);
+      })
     });
   }
 })();

@@ -2,6 +2,11 @@
 
 html {
   height: 100%;
+  scroll-behavior: smooth;
+}
+
+main {
+  scroll-behavior: smooth;
 }
 
 * {
@@ -10,6 +15,7 @@ html {
 
 h2 {
   letter-spacing: 2px;
+  font-size: 2em;
 }
 
 h3 {
@@ -38,6 +44,7 @@ section {
   padding: 7vw; 
 }
 
+
 body {
   display: flex;
   height: 100%;
@@ -52,13 +59,14 @@ body {
 .portfolio-btn button {
   display: inline-block;
   border: none;
-  margin: 0;
+  margin: 0 0 5vh 0;
   padding: 0.6em 0.5em;
   text-decoration: none;
   background: none;
   color: white;
   font-family: sans-serif;
-  font-size: 1.4em;
+  letter-spacing: 2px;
+  font-size: 1.6em;
   cursor: pointer;
   text-align: center;
   -webkit-appearance: none;
@@ -86,7 +94,7 @@ button:focus {
   position: absolute;
   top: 0;
   right: 0;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.4);
   width: 100%;
   height: 100%;
   min-width: 240px;
@@ -110,7 +118,7 @@ button:focus {
 
 .splash-overlay h1 {
   width: 100%;
-  margin: 1.3em 0 0 0;
+  margin: 8vh 0 0 0;
   font-size: 3.6em;
   text-align: center;
   font-weight: 400;
@@ -136,10 +144,6 @@ button:focus {
   font-size: 1.2em;
   width: 100%;
   padding: 0.6em;
-}
-
-.splash-overlay strong {
-  font-weight: 300;
 }
 
 main {
@@ -190,7 +194,7 @@ nav a::after {
   display: block;
   width: 0%;
   height: 2px;
-  background-color: rgb(60, 60, 60);
+  background-color: rgb(40, 40, 40);
   transition: all 0.35s ease-in-out ;
 }
 
@@ -254,6 +258,7 @@ section:nth-child(even) {
 }
 
 .portfolio-btn::before {
+  margin: 0 0 5vh 0;
   padding-bottom: 3px;
   transition: all 0.3s ease;
   font-size: 1.4em;
@@ -286,6 +291,7 @@ section:nth-child(even) {
 }
 
 .am-picture-container {
+  overflow: hidden;
   grid-row: 2/12;
   grid-column: 5/11;
 }
@@ -321,6 +327,7 @@ section:nth-child(even) {
 }
 
 #technologies {
+  min-height: 100vh;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -333,11 +340,11 @@ section:nth-child(even) {
   color: #E1A87A;
 }
 
-#technologies h2 {
-  line-height: 1.3em;
+.title {
+  line-height: 1.5em;
   letter-spacing: 3px;
   width: 100%;
-  margin: 3vh 0 10vh 0;
+  margin: 3vh 0 8vh 0;
   text-align: center;
   font-size: 2.2em;
   transition: all 0.5s ease-in;
@@ -354,13 +361,12 @@ section:nth-child(even) {
 .technology-item {
   padding: 0 2em 2em 0 ;
   color: white;
-  width: 9.5vw;
-  height: 9.5vw;
-  border-radius: 8px;
-  transition: transform 0.35s ease-in, opacity 0.2s ease-in-out;
+  width: 8.5vw;
+  height: 8.5vw;
+  transition: transform 0.2s ease-in, opacity 0.2s ease-in-out;
 }
 
-.technology-item:hover {
+.opacity-hover:hover {
   opacity: 0.5;
   cursor: pointer;
 }
@@ -411,6 +417,78 @@ section:nth-child(even) {
   width: 100%;
 } */
 
+.projects-container {
+  margin: 8vh 0;
+  display: grid;
+  grid-template-columns: repeat(4, 21.5vw);
+  grid-auto-rows: 21.5vw;
+}
+
+.projects-container > *:first-child {
+  grid-row: 1 / 1;
+  grid-column: 1 / 1;
+}
+
+.projects-container .one-one {
+  grid-row: span 1;
+  grid-column: span 1;
+}
+
+.projects-container .one-two {
+  grid-row: span 2;
+  grid-column: span 1;
+}
+
+.projects-container .two-one {
+  grid-row: span 1;
+  grid-column: span 2;
+}
+
+.projects-container .two-two {
+  grid-row: span 2;
+  grid-column: span 2;
+}
+
+.project-item {
+  border: solid white 3px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.4s ease-in;
+}
+
+.project-item img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.project-item:nth-child(1n) {
+  background-color: #221D23;
+}
+
+.project-item:nth-child(2n) {
+  background-color: #628395;
+}
+
+.project-item:nth-child(3n) {
+  background-color: #E1A87A;
+}
+
+.project-item:nth-child(4n) {
+  background-color: #CF9893;
+}
+
+.project-item:nth-child(5n) {
+  background-color: #92AA83;
+}
+
+#experience {
+  height: 100vh;
+}
+
 .picture-overlay {
   position: absolute;
   top: 6%;
@@ -426,24 +504,6 @@ section:nth-child(even) {
   width: 100%;
 }
 
-.img-carousel {
-  width: 60%;
-  margin: auto;
-  overflow: hidden;
-}
-
-.img-slider {
-  width: 100%;
-  height: 600px;
-  display: flex;
-}
-
-.img-slider img {
-  width: 100%;
-  height: auto;
-  align-self: flex-start;
-}
-
 .technology-info-card {
   position: fixed;
   z-index: 100000;
@@ -452,7 +512,7 @@ section:nth-child(even) {
   background: whitesmoke;
   top: 0;
   left: 0;
-  transition: all 0.4s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 
 .set-left {
@@ -480,5 +540,5 @@ section:nth-child(even) {
 }
 
 .top-20 {
-  transform: translate3d(0, 20%, 0)
+  transform: translate3d(0, 10%, 0)
 }
