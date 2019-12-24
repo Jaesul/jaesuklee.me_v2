@@ -42,6 +42,7 @@ main::-webkit-scrollbar-track {
 
 section {
   padding: 7vw; 
+  min-height: 100vh;
 }
 
 
@@ -252,8 +253,8 @@ section {
 }
 
 section:nth-child(even) {
-  background-color: rgb(30, 30, 30);
-  color: white
+  background-color: rgb(220, 220, 220);
+  /* color: white */
 }
 
 .portfolio-btn:hover {
@@ -283,8 +284,17 @@ section:nth-child(even) {
 
 #about-me {
   box-sizing: border-box;
-  height: 100vh;
+  min-height: 100vh;
   padding: 6em 0 5em 0; 
+  display: grid;
+  grid-template-columns: repeat(30, 1fr);
+  grid-template-rows: repeat(12, 1fr);
+}
+
+.grid-section {
+  box-sizing: border-box;
+  min-height: 100vh;
+  padding: 5em 0 5em 0; 
   display: grid;
   grid-template-columns: repeat(30, 1fr);
   grid-template-rows: repeat(12, 1fr);
@@ -308,11 +318,17 @@ section:nth-child(even) {
   justify-content: center;
 }
 
-.am-content-container h2 {
+h2 {
   font-size: 2em;
 }
 
 .am-content-container p {
+  color: rgb(80, 80, 80);
+  font-size: 1.1em;
+  line-height: 1.6em;
+}
+
+.grid-section p {
   color: rgb(80, 80, 80);
   font-size: 1.1em;
   line-height: 1.6em;
@@ -330,11 +346,21 @@ section:nth-child(even) {
   background-color: rgb(60, 60, 60);
 }
 
-#technologies {
-  min-height: 100vh;
+.content-container {
+  grid-row: 3/11;
+  grid-column: 5/15;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
+  transition: all 0.5s ease-in;
+}
+
+.icon-container {
+  grid-row: 2/12;
+  grid-column: 18/27;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 #technologies h3 {
@@ -350,34 +376,30 @@ section:nth-child(even) {
   width: 100%;
   margin: 3vh 0 8vh 0;
   text-align: center;
-  font-size: 2.2em;
+  font-size: 2.5em;
   transition: all 0.5s ease-in;
 }
 
 .technology-container {
   flex-wrap: wrap;
-  padding: 5vh 0;
+  padding: 4vh 0;
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
 }
 
 .technology-item {
+  position: relative;
   padding: 0 2em 2em 0 ;
   color: white;
-  width: 8.5vw;
-  height: 8.5vw;
+  width: 7.5vw;
+  height: 7.5vw;
   transition: transform 0.2s ease-in, opacity 0.2s ease-in-out;
 }
 
 .opacity-hover:hover {
   opacity: 0.5;
   cursor: pointer;
-}
-
-.technology-item:last-child {
-  padding: 0 0 2.5em 0;
-  width: 6.5vw;
 }
 
 .technology-item img {
@@ -421,11 +443,16 @@ section:nth-child(even) {
   width: 100%;
 } */
 
+.project-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
 .projects-container {
-  margin: 8vh 0;
+  margin: 8vh auto;
   display: grid;
-  grid-template-columns: repeat(4, 21.5vw);
-  grid-auto-rows: 21.5vw;
+  grid-template-columns: repeat(4, 17.5vw);
+  grid-auto-rows: 17.5vw;
 }
 
 .projects-container > *:first-child {
@@ -460,6 +487,7 @@ section:nth-child(even) {
   justify-content: center;
   align-items: center;
   transition: opacity 0.4s ease-in;
+  position: relative;
 }
 
 .project-item img {
@@ -469,25 +497,68 @@ section:nth-child(even) {
   display: block;
 }
 
-.project-item:nth-child(1n) {
-  background-color: #221D23;
+.project-item .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  color: white;
+  background-color: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translate3d(0, -100% ,0);
+  transition: all 0.45s ease-in-out;
+  background-color: rgba(30,30,30, 0.6);
 }
 
-.project-item:nth-child(2n) {
-  background-color: #628395;
+.project-item .content {
+  opacity: 0;
+  transition: opacity 0.25s ease-in 0.45s;
+}
+
+.project-item h3 {
+  font-size: 1.75em;
+  letter-spacing: 2px;
+}
+
+.project-item:hover .overlay {
+  transform: translate3d(0,0,0);
+}
+
+.project-item:hover {
+  cursor: pointer;;
+}
+
+.project-item:hover .overlay .content {
+  opacity: 1;
+}
+
+.project-item:nth-child(even) {
+  
+}
+
+/* .project-item:nth-child(odd) {
+  background-color:  rgba(225,168,122);
+} */
+
+/* .project-item:nth-child(2n) {
+  background-color: rgba(98,131,149);
 }
 
 .project-item:nth-child(3n) {
-  background-color: #E1A87A;
+  background-color: rgba(225,168,122);
 }
 
 .project-item:nth-child(4n) {
-  background-color: #CF9893;
+  background-color: rgba(207,152,147);
 }
 
 .project-item:nth-child(5n) {
-  background-color: #92AA83;
-}
+  background-color: rgba(146,170,131);
+} */
 
 #experience {
   height: 100vh;

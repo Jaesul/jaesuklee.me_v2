@@ -6,73 +6,101 @@
   let NAV_TIMEOUT;
 
   function init() { 
-    let splashCont = document.querySelector('.splash-content');
-    let mainContent = document.querySelector('.main-content');
-    let main = document.querySelector('main');
-    let logo = document.querySelector('.logo'); 
-    let amContent = document.querySelector('.am-content-container');
-    let amPicture = document.querySelector('.am-picture-container');
-    let technologyContainers = document.querySelectorAll('.technology-container');
-    let h2s = document.querySelectorAll('.title');
+    setTimeout(function() {
+      qs('.splash-content').classList.toggle('no-opacity');
+    }, 1000);
+    
+    showMainPage();
+
     let technologyItem = document.querySelectorAll('.technology-item');
-    let projects = document.querySelectorAll('.project-item');
-
-
     technologyItem.forEach(thing => {
       thing.addEventListener('click', () => {
         document.getElementById('javascript').classList.remove('slide-top');
       })
     });
+  }
 
+  function showMainPage() {
+    qs('.splash-content').classList.add('no-opacity');
+    qs('.portfolio-btn').addEventListener('click', transitionToMain);
+    setupObservers();
+    setupNav();
+  }
+
+  function transitionToMain() {
+    setTimeout(function() {
+      qs('main').classList.add('set-right');
+      setTimeout(function() {
+        qs('nav').classList.remove('no-opacity');
+        qs('.am-content-container').classList.remove('no-opacity','right-20');
+        qs('.am-picture-container').classList.remove('no-opacity','left-20');
+      }, 1000)
+    }, 300);
+  }
+
+  function setupObservers() {
+    let navObs = navObserver();
+    navObs.observe(qs('.main-content'));
+
+    let childObs = showChildrenObs();
+    let techContainers = qsa('.technology-container');
+    techContainers.forEach(element => {
+      childObs.observe(element);
+    });
+
+    let scrollObs = scrlCntObs();
+    let titles = qsa('.title');
+    titles.forEach(element => {
+      scrollObs.observe(element);
+    });
+
+    scrollObs.observe(qs('.content-container'))
+
+    let projects = qsa('.project-item');
+    projects.forEach(element => {
+      scrollObs.observe(element);
+    });
+  }
+
+  function showChildrenObs() {
+    let options = {
+      rootMargin: '0px 0px 0px 0px',
+      threshold: 0.4
+    }
+
+    let observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            let children = entry.target.children;
+            for (var i = 0; i < children.length; i++) {
+              technologyItemTimeout(children[i], i);
+            }
+          } 
+        });
+      }, options 
+    );
+
+    return observer;
+  }
+
+  function navObserver() {
     let options = {
       root: null,
       rootMargin: "0px 0px -100% 0px",
       threshold: 0
     }
 
-    let options2 = {
-      rootMargin: '0px 0px 0px 0px',
-      threshold: 0.63
-    }
-
-    let previousY = 0;
-
-    let toggleNavState = () => {
-      if (main.scrollTop > nav.clientHeight * 3) {
-        if (previousY > main.scrollTop) {
-          nav.classList.remove('slide-top');
-          clearInterval(NAV_TIMEOUT);
-          NAV_TIMEOUT = setTimeout(() => {
-            nav.classList.add('slide-top');
-          }, 1000);
-        } else if (previousY < main.scrollTop) {
-          nav.classList.add('slide-top');
-        }
-      } else if (NAV_TIMEOUT) {
-        clearTimeout(NAV_TIMEOUT);
-      } else { 
-        nav.classList.remove('slide-top')
-      }
-    };    
-
-    setInterval(() => {
-      if (main.scrollTop != previousY) {
-        window.requestAnimationFrame(toggleNavState);
-        previousY = main.scrollTop;
-      }
-    }, 10);
-
-    let nav = document.querySelector('nav');
-
     let observer = new IntersectionObserver(
       function(entries) {
         entries.forEach(entry => {
+          let nav = qs('nav');
           if (!entry.isIntersecting) {
             nav.classList.remove('nav-scrolled');
-            logo.src = 'imgs/icons/logo-icon.svg';
+            qs('.logo').src = 'imgs/icons/logo-icon.svg';
           } else {
             nav.classList.add('nav-scrolled');
-            logo.src = 'imgs/icons/logo-icon-white.svg';
+            qs('.logo').src = 'imgs/icons/logo-icon-white.svg';
             nav.addEventListener('mouseenter', () => {
               clearTimeout(NAV_TIMEOUT);
             });
@@ -83,65 +111,83 @@
             });
           } 
         });
-      }, options);
+      }, options
+    );
 
-    let technologyItemTimeout = (item, time) => {
-      setTimeout(function() {
-        item.classList.remove('top-20', 'no-opacity');
-        setTimeout(() => {
-          item.classList.add('opacity-hover');
-        }, 500);
-      }, 120 * time);
-    };
+    return observer
+  }
 
-    let technologyObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            let children = entry.target.children;
-            for (var i = 0; i < children.length; i++) {
-              technologyItemTimeout(children[i], i);
-            }
-          } 
-        });
-      }, options2 
-    )
+  function technologyItemTimeout(item, time) {
+    setTimeout(function() {
+      item.classList.remove('top-20', 'no-opacity', 'right-20');
+      setTimeout(() => {
+        item.classList.add('opacity-hover');
+      }, 500);
+    }, 120 * time);
+  }
 
-    let titleObserver = new IntersectionObserver(
+  function scrlCntObs() {
+    let options = {
+      rootMargin: '0px 0px 0px 0px',
+      threshold: 0.4
+    }
+
+    let observer = new IntersectionObserver(
       (entries) => {
         entries.forEach(entry => {
           if(entry.isIntersecting) {
-            entry.target.classList.remove('top-20', 'no-opacity');
+            entry.target.classList.remove('top-20', 'no-opacity', 'right-20');
           }
         });
-      }, options2
+      }, options
     )
-    
-    setTimeout(function() {
-      splashCont.classList.toggle('no-opacity');
-    }, 1000);
-    
-    let portfolioBtn = document.querySelector('.portfolio-btn');
-    portfolioBtn.addEventListener('click', function() {
-      splashCont.classList.add('no-opacity');
-      setTimeout(function() {
-        main.classList.add('set-right');
-        setTimeout(function() {
-          nav.classList.remove('no-opacity');
-          amContent.classList.remove('no-opacity','right-20');
-          amPicture.classList.remove('no-opacity','left-20');
-        }, 1000)
-      }, 300);
-      observer.observe(mainContent);
-      technologyContainers.forEach(container => {       
-        technologyObserver.observe(container)
-      });
-      h2s.forEach(element => {
-        titleObserver.observe(element);
-      });
-      projects.forEach(element => {
-        titleObserver.observe(element);
-      })
-    });
+
+    return observer;
+  }
+
+  function setupNav() {
+    let previousY = 0;
+
+    let main = qs('main');
+    setInterval(() => {
+      if (main.scrollTop != previousY) {
+        window.requestAnimationFrame(() => {
+          toggleNavState(previousY);
+        });
+        previousY = main.scrollTop;
+      }
+    }, 10);
+  }
+
+  function toggleNavState(previousY) {
+    let main = qs('main');
+    let nav = qs('nav');
+    if (main.scrollTop > nav.clientHeight * 3) {
+      if (previousY > main.scrollTop) {
+        nav.classList.remove('slide-top');
+        clearInterval(NAV_TIMEOUT);
+        NAV_TIMEOUT = setTimeout(() => {
+          nav.classList.add('slide-top');
+        }, 1000);
+      } else if (previousY < main.scrollTop) {
+        nav.classList.add('slide-top');
+      }
+    } else if (NAV_TIMEOUT) {
+      clearTimeout(NAV_TIMEOUT);
+    } else { 
+      nav.classList.remove('slide-top')
+    }
+  }
+
+  function qsa(elementName) {
+    return document.querySelectorAll(elementName);
+  }
+
+  function qs(elementName) {
+    return document.querySelector(elementName);
+  }
+
+  function id(idName) {
+    return document.getElementById(idName);
   }
 })();
