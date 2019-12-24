@@ -61,6 +61,11 @@
     projects.forEach(element => {
       scrollObs.observe(element);
     });
+
+    let experienceCards = qsa('.experience-card');
+    experienceCards.forEach(element => {
+      scrollObs.observe(element);
+    })
   }
 
   function showChildrenObs() {
