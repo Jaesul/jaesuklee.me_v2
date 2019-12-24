@@ -29,6 +29,7 @@
 
   function transitionToMain() {
     setTimeout(function() {
+      qs('.splash-content').classList.add('no-opacity');
       qs('main').classList.add('set-right');
       setTimeout(function() {
         qs('nav').classList.remove('no-opacity');
@@ -107,7 +108,7 @@
             nav.addEventListener('mouseleave', () => {
               NAV_TIMEOUT = setTimeout(() => {
                 nav.classList.add('slide-top');
-              }, 1000);
+              }, 1500);
             });
           } 
         });
@@ -168,7 +169,7 @@
         clearInterval(NAV_TIMEOUT);
         NAV_TIMEOUT = setTimeout(() => {
           nav.classList.add('slide-top');
-        }, 1000);
+        }, 1500);
       } else if (previousY < main.scrollTop) {
         nav.classList.add('slide-top');
       }
