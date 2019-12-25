@@ -537,7 +537,7 @@ p {
   letter-spacing: 2px;
 }
 
-.project-item:hover .overlay {
+.project-item:hover .overlay-transition {
   transform: translate3d(0,0,0);
 }
 
@@ -585,7 +585,7 @@ p {
   flex-wrap: wrap;
   min-height: 17em;
   background-color: white;
-  transition: all 0.4s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 
 .experience-card:first-child {
@@ -635,13 +635,54 @@ margin-top: 5vh;
 
 .technology-info-card {
   position: fixed;
-  z-index: 100000;
-  height: 100vh;
-  width: 100vw;
+  z-index: 1000;
+  height: 100%;
+  width: 100%;
   background: whitesmoke;
   top: 0;
   left: 0;
+  display: flex;
+  flex-wrap: wrap;
   transition: all 0.5s ease-in-out;
+  overflow: hidden;
+}
+
+.technology-info-card .content {
+  position: relative;
+  width: 70%;
+  padding: 10vh;
+  align-self: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.technology-info-card button {
+  position: absolute;
+  bottom: 5vh;
+  left: calc(30vw + 10vh);
+  font-size: 3em;
+  padding: 0;
+  border: none;
+  background: none;
+  transform: rotate(-90deg);
+  color: rgb(70, 70, 70);
+  transition: opacity 0.2s ease-in-out;
+}
+
+.tech-btn-hover:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.tech-img {
+  width: 30%;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+.tech-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 footer {

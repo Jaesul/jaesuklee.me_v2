@@ -11,12 +11,41 @@
     }, 1000);
     
     showMainPage();
+  }
 
-    let technologyItem = document.querySelectorAll('.technology-item');
-    technologyItem.forEach(thing => {
-      thing.addEventListener('click', () => {
-        document.getElementById('javascript').classList.remove('slide-top');
+  function setupTechnologyItems() {
+    let technologyItems = qsa('.technology-item');
+    technologyItems.forEach(element => {
+      element.addEventListener('click', function() {
+        id(this.dataset.target).classList.remove('slide-top');
+        setTimeout(() => {
+          let children = Array.from(id(this.dataset.target).children);
+          children.forEach(element => {
+            element.classList.remove('no-opacity');
+            if (element.tagName === 'BUTTON') {
+              element.classList.add('tech-btn-hover');
+            }
+          });
+        }, 600);
       })
+    });
+  }
+
+  function setupTechCardBtns() {
+    let btns = qsa('.tech-close-btn');
+    btns.forEach(element => {
+      element.addEventListener('click', function() {
+        let children = Array.from(this.parentNode.children);
+        children.forEach(element => {
+          element.classList.add('no-opacity');
+          if (element.tagName === 'BUTTON') {
+            element.classList.remove('tech-btn-hover');
+          }
+        });
+        setTimeout(() => {
+          this.parentNode.classList.add('slide-top');
+        }, 400);
+      });
     });
   }
 
@@ -25,6 +54,8 @@
     qs('.portfolio-btn').addEventListener('click', transitionToMain);
     setupObservers();
     setupNav();
+    setupTechnologyItems(); 
+    setupTechCardBtns();
   }
 
   function transitionToMain() {
@@ -38,6 +69,7 @@
       }, 1000)
     }, 300);
   }
+
 
   function setupObservers() {
     let navObs = navObserver();
@@ -143,6 +175,14 @@
         entries.forEach(entry => {
           if(entry.isIntersecting) {
             entry.target.classList.remove('top-20', 'no-opacity', 'right-20');
+            if (entry.target.classList.contains('project-item')) {
+              setTimeout(() => {
+                let overlay = entry.target.querySelector('.overlay');
+                if(overlay) {
+                  overlay.classList.add('overlay-transition');
+                }
+              }, 350);
+            }
           }
         });
       }, options
