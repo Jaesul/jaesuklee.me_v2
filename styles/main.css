@@ -457,20 +457,31 @@ p {
 }
 
 .projects-title {
-  font-size: 4em;
-  text-align: center;
+  width: 100%;
+  font-size: 2.2em;
+  text-align: left;
+  margin: 0.3em 0;
 }
 
 .projects-container {
   margin: 8vh auto;
   display: grid;
-  grid-gap: .5vw;
-  grid-template-columns: repeat(4, 17.5vw);
-  grid-auto-rows: 17.5vw;
+  grid-gap: .07vw;
+  grid-template-columns: repeat(4, 19vw);
+  grid-auto-rows: 19vw;
 }
 
 .projects-container:hover > *:first-child {
   cursor: default;
+}
+
+.project-item:first-child {
+  padding:  0 2vw 0 0;
+}
+
+.project-item:first-child p {
+  font-size: 1.1em;
+  line-height: 1.4em;
 }
 
 .projects-container .one-one {
@@ -497,6 +508,8 @@ p {
   border: solid white 3px;
   overflow: hidden;
   display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   transition: opacity 0.4s ease-in;
@@ -522,13 +535,13 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
-  transform: translate3d(0, -100% ,0);
-  transition: all 0.45s ease-in-out;
-  background-color: rgba(30,30,30, 0.6);
+  transition: all 0.3s ease-in-out;
+  background-color: rgba(30,30,30,0.55);
+  opacity: 0;
 }
 
 .project-item .content {
-  opacity: 0;
+  opacity: 1;
   transition: opacity 0.25s ease-in 0.45s;
 }
 
@@ -538,16 +551,13 @@ p {
 }
 
 .project-item:hover .overlay-transition {
-  transform: translate3d(0,0,0);
+  opacity: 1;
 }
 
 .project-item:hover {
-  cursor: pointer;;
+  cursor: pointer;
 }
 
-.project-item:hover .overlay .content {
-  opacity: 1;
-}
 
 /* .project-item:nth-child(odd) {
   background-color:  rgba(225,168,122);
@@ -574,10 +584,11 @@ p {
 }
 
 .experience-cards {
-  padding: 4vh 7.5vw;
+  padding: 4vh 9vw;
 }
 
 .experience-card {
+  align-items: center;
   margin: 10vh 0;
   border-radius: 5px;
   align-content: center;
@@ -596,9 +607,13 @@ margin-top: 5vh;
   margin-bottom: 5vh;
   }
 
-.experience-card img {
+.experience-card .img-container {
   padding: 3vw;
-  width: 23%;
+  width: 20%;
+}
+
+.experience-card .img-container img {
+  width: 100%
 }
 
 .experience-card h3 {
@@ -659,7 +674,7 @@ margin-top: 5vh;
   position: absolute;
   bottom: 5vh;
   left: calc(30vw + 10vh);
-  font-size: 3em;
+  font-size: 2.5em;
   padding: 0;
   border: none;
   background: none;

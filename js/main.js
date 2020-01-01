@@ -4,6 +4,7 @@
   window.addEventListener("load", init);
 
   let NAV_TIMEOUT;
+  let NAV_TIMEOUT2;
 
   function init() { 
     setTimeout(function() {
@@ -69,7 +70,6 @@
       }, 1000)
     }, 300);
   }
-
 
   function setupObservers() {
     let navObs = navObserver();
@@ -137,10 +137,12 @@
             nav.classList.remove('nav-scrolled');
             qs('.logo').src = 'imgs/icons/logo-icon.svg';
           } else {
+            setTimeout(() => {})
             nav.classList.add('nav-scrolled');
             qs('.logo').src = 'imgs/icons/logo-icon-white.svg';
             nav.addEventListener('mouseenter', () => {
               clearTimeout(NAV_TIMEOUT);
+              clearInterval(NAV_TIMEOUT2);
             });
             nav.addEventListener('mouseleave', () => {
               NAV_TIMEOUT = setTimeout(() => {
@@ -181,7 +183,7 @@
                 if(overlay) {
                   overlay.classList.add('overlay-transition');
                 }
-              }, 350);
+              }, 700);
             }
           }
         });
@@ -211,18 +213,33 @@
     if (main.scrollTop > nav.clientHeight * 3) {
       if (previousY > main.scrollTop) {
         nav.classList.remove('slide-top');
+        clearInterval(NAV_TIMEOUT2);
         clearInterval(NAV_TIMEOUT);
-        NAV_TIMEOUT = setTimeout(() => {
-          nav.classList.add('slide-top');
-        }, 1500);
+        if(!checkHoveringNav()) {
+          NAV_TIMEOUT = setTimeout(() => {
+            nav.classList.add('slide-top');
+          }, 1500);
+        }
       } else if (previousY < main.scrollTop) {
-        nav.classList.add('slide-top');
+        if(!nav.classList.contains('slide-top')) {
+          if (!checkHoveringNav()) {
+            NAV_TIMEOUT2 = setTimeout(() => {
+              nav.classList.add('slide-top');
+            }, 1000);
+          }
+        }
       }
     } else if (NAV_TIMEOUT) {
       clearTimeout(NAV_TIMEOUT);
+      clearInterval(NAV_TIMEOUT2);
     } else { 
-      nav.classList.remove('slide-top')
+      nav.classList.remove('slide-top');
     }
+  }
+
+  function checkHoveringNav() {
+    let nav = qs('nav');
+    return nav.parentElement.querySelector(':hover') === nav;
   }
 
   function qsa(elementName) {
