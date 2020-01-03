@@ -174,7 +174,7 @@ nav {
   box-sizing: border-box;
   width: 100%;
   display: flex;
-  padding: 2.7em 3.8em;
+  padding: 2.7em 8em;
   position: fixed;
   justify-content: space-between;
   color: rgb(70, 70, 70);
@@ -249,7 +249,7 @@ nav li:nth-last-child(1) {
 
 .nav-scrolled {
   background-color: rgb(40, 40, 40);;
-  padding: 0.95em 3em;
+  padding: 0.95em 7.5em;
   color: white;
 }
 
@@ -400,6 +400,8 @@ p {
   position: relative;
   padding: 0 2em 2em 0 ;
   color: white;
+  min-width: 100px;
+  min-height: 100px;
   width: 7.5vw;
   height: 7.5vw;
   transition: transform 0.2s ease-in, opacity 0.2s ease-in-out;
@@ -466,6 +468,7 @@ p {
 .projects-container {
   margin: 8vh auto;
   display: grid;
+  min-width: 950px;
   grid-gap: .07vw;
   grid-template-columns: repeat(4, 19vw);
   grid-auto-rows: 19vw;
@@ -692,6 +695,9 @@ margin-top: 5vh;
   width: 30%;
   overflow: hidden;
   transition: all 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .tech-img img {
@@ -700,10 +706,70 @@ margin-top: 5vh;
   object-fit: cover;
 }
 
+.tech-img .small {
+  width: 60%;
+  height: auto;
+}
+
 footer {
-  background-color: rgb(60, 60, 60);
+  background-color: rgb(40, 40, 40);
   width: 100%;
-  min-height: 24vh;
+  height: 13%;
+  padding: 2vh 16vw;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+footer .full-logo {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 50%;
+}
+
+footer a {
+  text-decoration: none;
+  color: white;
+  transition: opacity 0.2s ease-in-out;
+}
+
+footer a:visited {
+  color: white;
+}
+
+.full-logo:hover > * {
+  opacity: 0.4;
+}
+
+footer h2 {
+  margin-right: 0.8em;
+  font-size: 2.4vh;
+  letter-spacing: 1px;
+  font-weight: 400;
+  transition: opacity 0.2s ease-in-out;
+  text-align: right;
+}
+
+.full-logo a:hover {
+  opacity: 1;
+}
+
+.full-logo .img-container {
+  padding-right: 1.2em;
+  height: 50%;
+  width: auto;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.full-logo .img-container:hover {
+  opacity: 1;
+}
+
+.full-logo img {
+  height: 100%;
+  width: auto;
 }
 
 .set-left {

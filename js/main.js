@@ -57,6 +57,7 @@
     setupNav();
     setupTechnologyItems(); 
     setupTechCardBtns();
+    navStayDown();
   }
 
   function transitionToMain() {
@@ -98,6 +99,11 @@
     experienceCards.forEach(element => {
       scrollObs.observe(element);
     })
+
+    let footerContent = qs('.full-logo');
+    let copyright = qs('.copyright');
+    scrollObs.observe(footerContent);
+    scrollObs.observe(copyright);
   }
 
   function showChildrenObs() {
@@ -189,8 +195,17 @@
         });
       }, options
     )
-
     return observer;
+  }
+
+  function navStayDown() {
+    let containers = qsa('technology-item');
+    let nav = qs('nav');
+    containers.forEach(element => {
+      element.addEventListener('click', function() {
+        nav.classList.remove('nav-scrolled');
+      });
+    });
   }
 
   function setupNav() {
