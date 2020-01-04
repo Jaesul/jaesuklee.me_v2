@@ -128,6 +128,18 @@
     return observer;
   }
 
+  function hideNav() {
+    let nav = qs('nav');
+    NAV_TIMEOUT = setTimeout(() => {
+      nav.classList.add('slide-top');
+    }, 1500);
+  }
+
+  function clearNav() {
+    clearTimeout(NAV_TIMEOUT);
+    clearInterval(NAV_TIMEOUT2);
+  }
+
   function navObserver() {
     let options = {
       root: null,
@@ -142,19 +154,13 @@
           if (!entry.isIntersecting) {
             nav.classList.remove('nav-scrolled');
             qs('.logo').src = 'imgs/icons/logo-icon.svg';
+            nav.removeEventListener('mouseenter', hideNav);
           } else {
             setTimeout(() => {})
             nav.classList.add('nav-scrolled');
             qs('.logo').src = 'imgs/icons/logo-icon-white.svg';
-            nav.addEventListener('mouseenter', () => {
-              clearTimeout(NAV_TIMEOUT);
-              clearInterval(NAV_TIMEOUT2);
-            });
-            nav.addEventListener('mouseleave', () => {
-              NAV_TIMEOUT = setTimeout(() => {
-                nav.classList.add('slide-top');
-              }, 1500);
-            });
+            nav.addEventListener('mouseenter', clearNav);
+            nav.addEventListener('mouseleave', hideNav);
           } 
         });
       }, options
