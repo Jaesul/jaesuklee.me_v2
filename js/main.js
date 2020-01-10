@@ -57,6 +57,7 @@
     setupNav();
     setupTechnologyItems(); 
     setupTechCardBtns();
+    setupProjectButtons()
     navStayDown();
   }
 
@@ -154,7 +155,7 @@
           if (!entry.isIntersecting) {
             nav.classList.remove('nav-scrolled');
             qs('.logo').src = 'imgs/icons/logo-icon.svg';
-            nav.removeEventListener('mouseenter', hideNav);
+            nav.removeEventListener('mouseleave', hideNav);
           } else {
             setTimeout(() => {})
             nav.classList.add('nav-scrolled');
@@ -215,6 +216,8 @@
   }
 
   function setupNav() {
+    let nav = qs('nav');
+
     let previousY = 0;
 
     let main = qs('main');
@@ -226,6 +229,16 @@
         previousY = main.scrollTop;
       }
     }, 10);
+  }
+  
+  function setupProjectButtons() {
+    let projectBtns = qsa('.project-item');
+    
+    projectBtns.forEach(button => {
+      button.addEventListener('click', function() {
+        id(this.dataset.target).classList.remove('slide-top');
+      })
+    });
   }
 
   function toggleNavState(previousY) {

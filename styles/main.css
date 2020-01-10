@@ -479,7 +479,7 @@ p {
 }
 
 .project-item:first-child {
-  padding:  0 2vw 0 0;
+  padding:  0 4vw 0 0;
 }
 
 .project-item:first-child p {
@@ -714,7 +714,7 @@ margin-top: 5vh;
 footer {
   background-color: rgb(40, 40, 40);
   width: 100%;
-  height: 11%;
+  height: 7%;
   padding: 2vh 16vw;
   color: white;
   display: flex;
@@ -727,6 +727,11 @@ footer .full-logo {
   align-items: center;
   height: 100%;
   width: 50%;
+  transition: all 0.5s ease-in-out;
+}
+
+.copyright {
+  transition: all 0.5s ease-in-out;
 }
 
 footer a {
@@ -745,7 +750,7 @@ footer a:visited {
 
 footer h2 {
   margin-right: 0.8em;
-  font-size: 2.3vh;
+  font-size: 1.8vh;
   letter-spacing: 1px;
   font-weight: 400;
   transition: opacity 0.2s ease-in-out;
@@ -757,8 +762,8 @@ footer h2 {
 }
 
 .full-logo .img-container {
-  padding-right: 1.2em;
-  height: 50%;
+  padding-right: 1.3vh;
+  height: 90%;
   width: auto;
   transition: opacity 0.2s ease-in-out;
 }
@@ -770,6 +775,16 @@ footer h2 {
 .full-logo img {
   height: 100%;
   width: auto;
+}
+
+.project-info {
+  position: fixed;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.project-info:nth-child(even) {
+  background: grey;
 }
 
 .set-left {
