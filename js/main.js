@@ -244,7 +244,7 @@
   function toggleNavState(previousY) {
     let main = qs('main');
     let nav = qs('nav');
-    if (main.scrollTop > nav.clientHeight * 3) {
+    if (main.scrollTop > nav.clientHeight * 2) {
       if (previousY > main.scrollTop) {
         nav.classList.remove('slide-top');
         clearInterval(NAV_TIMEOUT2);

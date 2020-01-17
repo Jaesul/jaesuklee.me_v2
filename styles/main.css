@@ -292,8 +292,8 @@ section:nth-child(even) {
 
 #about-me {
   box-sizing: border-box;
-  min-height: 100vh;
-  padding: 6em 0 5em 0; 
+  height: 100%;
+  padding: 4em 0 5em 0; 
   display: grid;
   grid-template-columns: repeat(30, 1fr);
   grid-template-rows: repeat(12, 1fr);
@@ -320,7 +320,7 @@ section:nth-child(even) {
 
 .am-content-container {
   grid-row: 3/11;
-  grid-column: 13/27;
+  grid-column: 13/29;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -737,8 +737,8 @@ margin-top: 5vh;
 footer {
   background-color: rgb(40, 40, 40);
   width: 100%;
-  height: 7%;
-  padding: 2vh 16vw;
+  height: 9%;
+  padding: 2vh 12vw;
   color: white;
   display: flex;
   justify-content: space-between;
@@ -755,6 +755,7 @@ footer .full-logo {
 
 .copyright {
   transition: all 0.5s ease-in-out;
+  margin-right: 0;
 }
 
 footer a {
@@ -773,7 +774,7 @@ footer a:visited {
 
 footer h2 {
   margin-right: 0.8em;
-  font-size: 1.8vh;
+  font-size: 100%;
   letter-spacing: 1px;
   font-weight: 400;
   transition: opacity 0.2s ease-in-out;
