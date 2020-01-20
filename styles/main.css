@@ -686,25 +686,30 @@ margin-top: 5vh;
   flex-wrap: wrap;
   transition: all 0.5s ease-in-out;
   overflow: hidden;
+  align-content: center;
 }
 
 .technology-info-card .content {
   position: relative;
   width: 70%;
-  padding: 10vh;
+  padding: 4%;
   align-self: center;
   transition: all 0.3s ease-in-out;
+}
+
+.technology-info-card .content h2 {
+  font-size: 1.7em;
 }
 
 .technology-info-card button {
   position: absolute;
   bottom: 5vh;
   left: calc(30vw + 10vh);
-  font-size: 2.5em;
+  font-size: 4em;
+  font-weight: 300;
   padding: 0;
   border: none;
   background: none;
-  transform: rotate(-90deg);
   color: rgb(70, 70, 70);
   transition: opacity 0.2s ease-in-out;
 }
@@ -716,6 +721,7 @@ margin-top: 5vh;
 
 .tech-img {
   width: 30%;
+  height: 100%;
   overflow: hidden;
   transition: all 0.3s ease-in-out;
   display: flex;
