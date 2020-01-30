@@ -291,8 +291,8 @@ section:nth-child(even) {
 
 #about-me {
   box-sizing: border-box;
-  min-height: 100vh;
-  padding: 6em 0 5em 0; 
+  height: 100%;
+  padding: 4em 0 5em 0; 
   display: grid;
   grid-template-columns: repeat(30, 1fr);
   grid-template-rows: repeat(12, 1fr);
@@ -319,7 +319,7 @@ section:nth-child(even) {
 
 .am-content-container {
   grid-row: 3/11;
-  grid-column: 13/27;
+  grid-column: 13/29;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -588,9 +588,6 @@ li {
   background-color: rgba(146,170,131);
 } */
 
-#experience {
-
-}
 
 .experience-cards {
   padding: 4vh 5vw;
@@ -685,25 +682,30 @@ margin-top: 5vh;
   flex-wrap: wrap;
   transition: all 0.5s ease-in-out;
   overflow: hidden;
+  align-content: center;
 }
 
 .technology-info-card .content {
   position: relative;
   width: 70%;
-  padding: 10vh;
+  padding: 4%;
   align-self: center;
   transition: all 0.3s ease-in-out;
+}
+
+.technology-info-card .content h2 {
+  font-size: 1.7em;
 }
 
 .technology-info-card button {
   position: absolute;
   bottom: 5vh;
   left: calc(30vw + 10vh);
-  font-size: 2.5em;
+  font-size: 4em;
+  font-weight: 300;
   padding: 0;
   border: none;
   background: none;
-  transform: rotate(-90deg);
   color: rgb(70, 70, 70);
   transition: opacity 0.2s ease-in-out;
 }
@@ -715,6 +717,7 @@ margin-top: 5vh;
 
 .tech-img {
   width: 30%;
+  height: 100%;
   overflow: hidden;
   transition: all 0.3s ease-in-out;
   display: flex;
@@ -736,7 +739,7 @@ margin-top: 5vh;
 footer {
   background-color: rgb(40, 40, 40);
   width: 100%;
-  height: 7.5%;
+  height: 9%;
   padding: 2vh 12vw;
   color: white;
   display: flex;
@@ -754,6 +757,7 @@ footer .full-logo {
 
 .copyright {
   transition: all 0.5s ease-in-out;
+  margin-right: 0;
 }
 
 footer a {
@@ -771,8 +775,8 @@ footer a:visited {
 }
 
 footer h2 {
-  margin-right: 1em;
-  font-size: 1.2em;
+  margin-right: 0.8em;
+  font-size: 100%;
   letter-spacing: 1px;
   font-weight: 400;
   transition: opacity 0.2s ease-in-out;
