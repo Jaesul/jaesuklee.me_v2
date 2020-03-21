@@ -157,7 +157,6 @@
             qs('.logo').src = 'imgs/icons/logo-icon.svg';
             nav.removeEventListener('mouseleave', hideNav);
           } else {
-            setTimeout(() => {})
             nav.classList.add('nav-scrolled');
             qs('.logo').src = 'imgs/icons/logo-icon-white.svg';
             nav.addEventListener('mouseenter', clearNav);
