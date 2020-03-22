@@ -101,10 +101,10 @@
       scrollObs.observe(element);
     })
 
-    let footerContent = qs('.full-logo');
-    let copyright = qs('.copyright');
-    scrollObs.observe(footerContent);
-    scrollObs.observe(copyright);
+    let projCards = qsa('.card');
+    projCards.forEach(element => {
+      scrollObs.observe(element);
+    })
   }
 
   function showChildrenObs() {
