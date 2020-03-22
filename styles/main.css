@@ -163,7 +163,7 @@ main {
 
 .main-content {
   box-sizing: border-box;
-  margin-top: 3px;
+  margin-top: 7px;
   position: relative;
   width: 100%;
   z-index: 10;
@@ -477,8 +477,12 @@ li {
   width: 100%;
   border-radius: 5px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
-  height: 32em;
+  height: 30em;
   transition: all 0.5s ease-in-out;;
+}
+
+.project-card-container .card:hover img {
+  transform: scale(1.05)
 }
 
 .project-card-container .card header {
@@ -492,13 +496,15 @@ li {
 
 .project-card-container .card .img-container {
   width: 50%;
-  height: 100%
+  height: 100%;
+  overflow: hidden;
 }
 
 .project-card-container .card .img-container img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: all 0.5s ease-in-out;
 }
 
 
@@ -536,7 +542,51 @@ li {
   opacity: 0.6;
 }
 
-.experience-cards {
+.experience-card-container {
+  padding: 0 5vw;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.experience-card {
+  /* background-color: white; */
+  width: 45%;
+  margin: 2em 0;
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 5px;
+  overflow: hidden;
+  /* box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19); */
+}
+
+.experience-card-container h3 {
+  margin: .7em 0;
+  font-size: 1em;
+  color: rgb(122, 122, 122);
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.experience-card-container h2 {
+  margin-top: 0;
+  font-size: 2em;
+}
+
+.experience-card .img-container {
+  width: 100%;
+}
+
+
+.experience-card .img-container img {
+  width: 100%;
+}
+
+.experience-card .content {
+  /* padding: 1em 1.5em */
+}
+
+/* .experience-cards {
   padding: 4vh 5vw;
 }
 
@@ -600,7 +650,7 @@ margin-top: 5vh;
 .experience-card li span {
   position: relative;
   left: 0.5em
-}
+} */
 
 .picture-overlay {
   position: absolute;

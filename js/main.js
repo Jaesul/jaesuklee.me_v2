@@ -133,7 +133,7 @@
     let nav = qs('nav');
     NAV_TIMEOUT = setTimeout(() => {
       nav.classList.add('slide-top');
-    }, 1500);
+    }, 800);
   }
 
   function clearNav() {
@@ -165,7 +165,6 @@
         });
       }, options
     );
-
     return observer
   }
 
