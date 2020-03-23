@@ -566,8 +566,9 @@ li {
   border-radius: 5px;
   position: relative;
   /* background-color: white; */
-  width: 35%;
-  margin: 2em 0 4em 0;
+  width: 40%;
+  margin: 1em 0 2em 0;
+  padding: 1em 0 2em 0;
   display: flex;
   flex-wrap: wrap;
   overflow: hidden;
@@ -614,7 +615,7 @@ li {
 .experience-card .overlay .content {
   width: 100%;
   height: 100%;
-  padding: 1.5em 2.5em;
+  padding: 1.5em 1.5em;
 }
 
 .experience-card .overlay .content h3 {
