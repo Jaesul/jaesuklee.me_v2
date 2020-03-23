@@ -105,6 +105,11 @@
     projCards.forEach(element => {
       scrollObs.observe(element);
     })
+
+    let expCards = qsa('.experience-card');
+    expCards.forEach(element => {
+      scrollObs.observe(element);
+    })
   }
 
   function showChildrenObs() {
@@ -187,7 +192,7 @@
       (entries) => {
         entries.forEach(entry => {
           if(entry.isIntersecting) {
-            entry.target.classList.remove('top-20', 'no-opacity', 'right-20');
+            entry.target.classList.remove('top-20', 'no-opacity', 'right-20', 'left-20');
             if (entry.target.classList.contains('project-item')) {
               setTimeout(() => {
                 let overlay = entry.target.querySelector('.overlay');
