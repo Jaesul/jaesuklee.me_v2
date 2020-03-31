@@ -116,7 +116,7 @@
               <p>                
                 This project was a dive into p5.js, node.js, and a lot of physical computing. I stretched my imagination and sharpened my web development and physical design skills.               
               </p>
-              <button data-target="">
+              <button class="project-button" data-target="kira">
                 Project Details
               </button>
             </div>
@@ -129,28 +129,28 @@
               <header>
                 <h3>WEB DEVELOPMENT / VISUAL DESIGN</h3>
               </header>
-              <h2>Project Portfolio: Get a job</h2>
+              <h2>Project Portfolio: Let's Get Hired!</h2>
               <p>          
-                My always updated project that taught me most of my front-end skills. This is the third iteration and the best by far. This portfolio also helped develop my typography and visual hierarchy skills.
+                My always updated project that taught me most of my front-end skills. This is the third iteration and the best by far. This is my attempt at a masterclass on typography and hierarchy.
               </p>
-              <button data-target="">
+              <button class="project-button" data-target="portfolio">
                 Project Details
               </button>
             </div>
           </div>
           <div class="card no-opacity right-20">
             <div class="img-container">
-                <img src="imgs/project-thumb/portfolio.png" alt="">
+                <img src="imgs/project-thumb/ux-rescue.jpg" alt="">
             </div>
             <div class="project-splash">
               <header>
-                <h3>WEB DEVELOPMENT / VISUAL DESIGN</h3>
+                <h3>UX DESIGN</h3>
               </header>
-              <h2>Project Portfolio: Get a job</h2>
+              <h2>UX&Rescue: Redesigning a firefighter's experience</h2>
               <p>          
-                My always updated project that taught me most of my front-end skills. This is the third iteration and the best by far. This portfolio also helped develop my typography and visual hierarchy skills.
+                My largest UX project to date. A dive into the day to day tasks of firefighters to find areas of improvement.  This project was an end to end design journey that taught me what it means to be a designer. 
               </p>
-              <button data-target="">
+              <button class="project-button" data-target="uxrescue">
                 Project Details
               </button>
             </div>
@@ -241,7 +241,7 @@
                 <ul>
                   <li>
                     <span>
-                      Conducted office hours for student help on assignment and creative coding projects
+                      Conducted office hours for student help on assignments and creative coding projects
                     </span> 
                   </li>
                   <li>
@@ -278,109 +278,6 @@
             </div>
           </div>
         </div>
-        <!-- <div class="experience-cards">
-          <div class="experience-card no-opacity right-20">
-            <div class="img-container">
-              <img src="imgs/bluetooth.png" alt="">
-            </div>
-            <div class="content">
-              <h2>Software Engineer</h2>
-              <h3>Bluetooth SIG</h3>
-              <ul>
-                <li>
-                  <span>
-                    Developed console applications for automation, reducing data upload times
-                  </span> 
-                </li>
-                <li>
-                  <span>
-                    Wrote SQL scripts to assist data modification in automated applications  
-                  </span> 
-                </li>
-                <li>
-                  <span>
-                    Worked on a diverse team to create web app designs for internal data maintenance
-                  </span> 
-                </li>
-                <li>
-                  <span>
-                    Created internal and external APIs for data maintenance 
-                  </span> 
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="experience-card no-opacity right-20">
-            <div class="img-container">
-              <img src="imgs/uw.jpg" alt="">
-            </div>
-            <div class="content">
-              <h2>
-                Interactive Systems Design & Technology 
-                <br> Course Assistant
-              </h2>
-              <h3>University of Washington</h3>
-              <ul>
-                <li>
-                  <span>
-                    Conducted office hours for student help on assignment and creative coding projects
-                  </span> 
-                </li>
-                <li>
-                  <span>
-                    Worked with instructor and multiple other course assistants to manage class 
-                  </span> 
-                </li>
-                <li>
-                  <span>
-                    Graded student code and written assignments 
-                  </span> 
-                </li>
-                <li>
-                  <span>
-                    Responded to student coding questions
-                  </span> 
-                </li>
-                <li>
-                  <span>
-                    Tutored students one-on-one  
-                  </span> 
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="experience-card no-opacity right-20">
-            <div class="img-container">
-              <img src="imgs/asuw.png" alt="">
-            </div>
-            <div class="content">
-              <h2>Bike Mechanic</h2>
-              <h3>University of Washington</h3>
-              <ul>
-                <li>
-                  <span>
-                    Repaired and maintained bicycles 
-                  </span> 
-                </li>
-                <li>
-                  <span>
-                    Salesperson for bicycles and bike parts 
-                  </span> 
-                </li>
-                <li>
-                  <span>
-                    Taught bicycle repair classes
-                  </span> 
-                </li>
-                <li>
-                  <span>
-                    Operated cash register for sales
-                  </span> 
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div> -->
       </section>
       <div class='technology-info-card slide-top' id='javascript'>
         <div class="tech-img no-opacity">
@@ -540,7 +437,7 @@
       </div>
       <div class='technology-info-card slide-top' id='p5js'>
         <div class="tech-img no-opacity">
-          <img src="imgs/technologies/code-imgs/p5.js.png" alt="">
+          <img data-src="imgs/technologies/code-imgs/p5.js.png" alt="">
         </div>
         <div class="content no-opacity">
           <h2>p5.js: Let's step up this webpage's interactivity </h2>
@@ -550,18 +447,98 @@
         </div>
         <button class='tech-close-btn no-opacity'>^</button>
       </div>
-      <div class="project-info slide-top" id="project1">
-
-      </div>
-      <div class="project-info slide-top" id="project2">
-
-      </div>
-      <div class="project-info slide-top" id="project3">
-
-      </div>
-      <div class="project-info slide-top" id="project4">
-
-      </div>
+      <section id="project-details-pages">
+        <div class="project-item" id='kira'>
+          <div class="content">
+            <h1>kira</h1>
+            <button class="project-exit" data-target="kira">
+              →
+            </button>
+          </div>
+        </div>
+        <div class="project-item" id='portfolio'>
+          <button class="project-exit" data-target="portfolio">
+            →
+          </button>
+          <div class="content">
+            <div class="gif-container">
+              <video width="100%" autoplay loop muted playsinline>
+                <source src="imgs/portfolio/gif.mp4" type="video/mp4" />
+              </video>
+            </div>
+            <section class="intro-info">
+              <h2>Project Portfolio: Let's Get Hired!</h2>
+              <div class="focus">
+                <h3>Overview</h3>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab ea saepe enim ducimus exercitationem iusto repellendus magni deserunt consequatur aspernatur.
+                </p>
+                <h3>Problem</h3>
+                <p>
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae natus repudiandae ducimus accusamus molestias illum commodi. Dignissimos mollitia magni totam excepturi eaque ipsam velit veniam deserunt, itaque tenetur iure hic?
+                </p>
+                <h3>Objective</h3>
+                <p>
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae natus repudiandae ducimus accusamus molestias illum commodi. Dignissimos mollitia magni totam excepturi eaque ipsam velit veniam deserunt, itaque tenetur iure hic?
+                </p>
+              </div>
+              <div class="side">
+                <h3>Role</h3>
+                <p>
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio debitis earum suscipit molestiae reprehenderit voluptates corrupti animi magni distinctio velit!
+                </p>
+                <h3>Timeline</h3>
+                <p>Sept 2019 - Current</p>
+                <h3>Technologies used</h3>
+                <ul>
+                  <li>Item</li>
+                  <li>Item</li> 
+                  <li>Item</li>
+                </ul>
+              </div>
+            </section>
+            <section class="project-main">
+              <h2>Project Portfolio: Let's Get Hired!</h2>
+              <div class="focus">
+                <h3>Overview</h3>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab ea saepe enim ducimus exercitationem iusto repellendus magni deserunt consequatur aspernatur.
+                </p>
+                <h3>Problem</h3>
+                <p>
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae natus repudiandae ducimus accusamus molestias illum commodi. Dignissimos mollitia magni totam excepturi eaque ipsam velit veniam deserunt, itaque tenetur iure hic?
+                </p>
+                <h3>Objective</h3>
+                <p>
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae natus repudiandae ducimus accusamus molestias illum commodi. Dignissimos mollitia magni totam excepturi eaque ipsam velit veniam deserunt, itaque tenetur iure hic?
+                </p>
+              </div>
+              <div class="side">
+                <h3>Role</h3>
+                <p>
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio debitis earum suscipit molestiae reprehenderit voluptates corrupti animi magni distinctio velit!
+                </p>
+                <h3>Timeline</h3>
+                <p>Sept 2019 - Current</p>
+                <h3>Technologies used</h3>
+                <ul>
+                  <li>Item</li>
+                  <li>Item</li> 
+                  <li>Item</li>
+                </ul>
+              </div>
+            </section>
+          </div>
+        </div>
+        <div class="project-item" id='uxrescue'>
+          <div class="content">
+            <h1>uxrescue</h1>
+            <button class="project-exit" data-target="uxrescue">
+              →
+            </button>
+          </div>
+        </div>
+      </section>
     </div>
     <footer>
       <h2>Let's connect</h2>
@@ -579,10 +556,11 @@
         </div>
         <div class="contact-icon">
           <a href="#" target="blank">
-            <img src="imgs/footer/insta.png" alt="">
+            <img src="imgs/footer/linkedin.png" alt="">
           </a>  
         </div>
       </div>
+      <h3 class="copyright">Copyright © 2020 Jaesuk Lee. All Rights Reserved.</h3>
     </footer>
   </main>
 </body>

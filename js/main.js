@@ -10,7 +10,6 @@
     setTimeout(function() {
       qs('.splash-content').classList.toggle('no-opacity');
     }, 1000);
-    
     showMainPage();
   }
 
@@ -18,6 +17,7 @@
     let technologyItems = qsa('.technology-item');
     technologyItems.forEach(element => {
       element.addEventListener('click', function() {
+        fixMain()
         id(this.dataset.target).classList.remove('slide-top');
         setTimeout(() => {
           let children = Array.from(id(this.dataset.target).children);
@@ -37,6 +37,7 @@
     btns.forEach(element => {
       element.addEventListener('click', function() {
         let children = Array.from(this.parentNode.children);
+        unFixMain();
         children.forEach(element => {
           element.classList.add('no-opacity');
           if (element.tagName === 'BUTTON') {
@@ -55,6 +56,7 @@
     qs('.portfolio-btn').addEventListener('click', transitionToMain);
     setupObservers();
     setupNav();
+    setupLazyLoader();
     setupTechnologyItems(); 
     setupTechCardBtns();
     setupProjectButtons()
@@ -208,6 +210,44 @@
     return observer;
   }
 
+  function setupLazyLoader() {
+    let imgs = qsa("[data-src]");
+    let lazyObs = lazyLoaderObs();
+    imgs.forEach(element => {
+      let src = element.dataset.src;
+      lazyObs.observe(element);
+    });
+  }
+
+  function preloadImg(img) {
+    const src = img.dataset.src;
+
+    if(!src) {
+      return
+    }
+
+    img.src = src;
+  }
+
+  function lazyLoaderObs() {
+    let options = {
+      rootMargin: '0px 0px 0px 0px',
+    }
+
+    let observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) {
+            return;
+          } else {
+            preloadImg(entry.target);
+          }
+        });
+      }, options
+    );
+    return observer;
+  }
+
   function navStayDown() {
     let containers = qsa('technology-item');
     let nav = qs('nav');
@@ -235,13 +275,35 @@
   }
   
   function setupProjectButtons() {
-    let projectBtns = qsa('.project-item');
-    
+    let projectBtns = qsa('.project-button');
     projectBtns.forEach(button => {
       button.addEventListener('click', function() {
-        id(this.dataset.target).classList.remove('slide-top');
+        console.log(this.dataset.target);
+        id(this.dataset.target).classList.add('slide-left');
+        fixMain();
       })
     });
+
+    let projectExtBtns = qsa('.project-exit');
+    projectExtBtns.forEach(button => {
+      button.addEventListener('click', function() {
+        console.log(this.dataset.target);
+        id(this.dataset.target).classList.remove('slide-left');
+        unFixMain();
+      })
+    });
+  }
+
+  function fixMain() {
+    setTimeout(() => {
+      qs('main').classList.add('main-shift-padding');
+    }, 800);
+    let nav = qs('nav');
+    nav.classList.add('slide-top');
+  }
+
+  function unFixMain() {
+    qs('main').classList.remove('main-shift-padding');
   }
 
   function toggleNavState(previousY) {

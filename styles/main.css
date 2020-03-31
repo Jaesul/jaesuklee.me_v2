@@ -44,6 +44,24 @@ main::-webkit-scrollbar-track {
   background: transparent;
 }
 
+.project-item::-webkit-scrollbar {
+	width: 10px;
+}
+
+.project-item::-webkit-scrollbar-thumb
+{
+  background-color: #888;
+  background-clip: padding-box;
+}
+
+.project-item::-webkit-scrollbar-thumb:hover {
+  opacity: 0.5;
+}
+
+.project-item::-webkit-scrollbar-track {
+  background: transparent;
+}
+
 section {
   padding: 7vw; 
   min-height: 100vh;
@@ -546,8 +564,98 @@ li {
   opacity: 0.6;
 }
 
+#project-details-pages {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translate3d(100%, 0, 0);
+  transition: all 0.7s ease-in-out;
+}
+
+.project-item {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  overflow: auto;
+  background: white;
+  top: 0;
+  left: 0;
+  transition: all 0.7s ease-in-out;
+}
+
+.project-item .content {
+  width: 100%;
+  height: auto;
+  padding-bottom: 5em;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-item .gif-container {
+  margin: 4em auto;
+  width: 85%;
+}
+
+.gif-container .img
+
+.project-item section {
+  background: white;
+}
+
+.project-exit {
+  position: fixed;
+  top: 0.2em; 
+  left: 1em;
+  border: none;
+  background: transparent;
+  text-decoration: none;
+  font-size: 2.3em;
+  font-weight: 800;
+  z-index: 1000;
+  transition: all 0.3s ease-in-out;
+}
+
+.project-exit:hover {
+  transform: translate3d(.2em, 0, 0);
+  opacity: 0.5;
+}
+
 #experience {
   padding-bottom: 4vw;
+}
+
+.project-item section {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 33% 33% 34%;
+  padding: 2em 25vw;
+  grid-column-gap: 4em;
+  min-height: 0;
+  background-color: white ;
+}
+
+.project-item .project-main {
+  padding: 2em 18vw;
+}
+
+.project-item section h2 {
+  grid-column: span 3;
+  margin-bottom: 2em;
+}
+
+.project-item section h3 {
+  margin: 2em 0 .5em 0;
+  font-weight: 500;
+}
+
+.project-item section .focus {
+  grid-column: span 2;
+}
+
+.project-item section .side {
+  grid-column: span 1;
 }
 
 #experience .title {
@@ -613,9 +721,12 @@ li {
 }
 
 .experience-card .overlay .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   width: 100%;
   height: 100%;
-  padding: 1.5em 1.5em;
+  padding: 7% 7%;
 }
 
 .experience-card .overlay .content h3 {
@@ -779,14 +890,16 @@ footer h2 {
   text-align: center;
 }
 
-.project-info {
-  position: fixed;
-  width: 100%;
-  min-height: 100vh;
+footer h3 {
+  margin-top: 3em;
+  font-weight: 400;
+  font-size: .8em;
+  opacity: 0.7;
 }
 
-.project-info:nth-child(even) {
-  background: grey;
+.main-shift-padding {
+  padding-right: 10px;
+  overflow: hidden;
 }
 
 .set-left {
@@ -801,8 +914,16 @@ footer h2 {
   top: 0;
 }
 
+.set-center {
+  transform: translate3d(0, 0, 0);
+}
+
 .slide-top {
   transform: translate3d(0, -100%, 0);
+}
+
+.slide-left {
+  transform: translate3d(-100%, 0, 0);
 }
 
 .right-20 {
@@ -815,4 +936,8 @@ footer h2 {
 
 .top-20 {
   transform: translate3d(0, 10%, 0)
+}
+
+.display-none {
+  display: none;
 }
