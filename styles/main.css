@@ -584,10 +584,15 @@ li {
   transition: all 0.7s ease-in-out;
 }
 
+.project-item blockquote {
+  font-size: 1.1em;
+  color: rgb(80, 80, 80);
+  font-style: italic;
+}
+
 .project-item .content {
   width: 100%;
   height: auto;
-  padding-bottom: 5em;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -756,6 +761,9 @@ li {
 .project-details .full-img-container {
   width: 50%;
   position: relative;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+  overflow: hidden;
 }
 
 .project-details .full-img-container::after {
@@ -824,7 +832,7 @@ li {
 }
 
 .project-item section h3 {
-  margin: 2em 0 .5em 0;
+  margin: 2em 0 .7em 0;
   font-weight: 500;
 }
 
