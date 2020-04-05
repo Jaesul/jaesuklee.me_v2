@@ -318,6 +318,7 @@ section:nth-child(even) {
   display: grid;
   grid-template-columns: repeat(30, 1fr);
   grid-template-rows: repeat(12, 1fr);
+  min-height: 100vh;
 }
 
 .grid-section {
@@ -499,7 +500,7 @@ li {
   width: 100%;
   border-radius: 5px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
-  /* height: 30em; */
+  height: 30em;
   transition: all 0.5s ease-in-out;;
 }
 
@@ -555,7 +556,7 @@ li {
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   justify-self: flex-end;
-  margin-top: 1.5em;
+  margin-top: auto;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
 }
 
