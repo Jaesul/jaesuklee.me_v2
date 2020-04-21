@@ -1,16 +1,43 @@
 "use strict";
 (function() {
 
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    if(typeof(Storage) !== 'undefined') {
+        // See if there is a scroll pos and go there.
+        var lastYPos = +localStorage.getItem('scrollYPos');
+        if (lastYPos) {
+            console.log('Setting scroll pos to:', lastYPos);
+            window.scrollTo(0, lastYPos);
+        }
+
+        // On navigating away first save the position.
+        var anchors = qsa('a');
+
+        var onNavClick = function() {
+            console.log('Saving scroll pos to:', window.scrollY);
+            localStorage.setItem('scrollYPos', window.scrollY);
+        };
+
+        for (var i = 0; i < anchors.length; i++) {
+            anchors[i].addEventListener('click', onNavClick);
+        }
+    }
+  });
+
   window.addEventListener("load", init);
 
   let NAV_TIMEOUT;
   let NAV_TIMEOUT2;
 
   function init() { 
-    setTimeout(function() {
-      qs('.splash-content').classList.toggle('no-opacity');
-    }, 1000);
+    // setTimeout(function() {
+    //   qs('.splash-content').classList.toggle('no-opacity');
+    // }, 1000);
     showMainPage();
+    window.addEventListener("unload", function () {
+      localStorage.setItem('scrollYPos', 0);
+    });
   }
 
   function setupTechnologyItems() {
@@ -52,8 +79,7 @@
   }
 
   function showMainPage() {
-    qs('.splash-content').classList.add('no-opacity');
-    qs('.portfolio-btn').addEventListener('click', transitionToMain);
+    transitionToMain();
     setupObservers();
     setupNav();
     setupLazyLoader();
@@ -65,13 +91,11 @@
 
   function transitionToMain() {
     setTimeout(function() {
-      qs('.splash-content').classList.add('no-opacity');
-      qs('main').classList.add('set-right');
-      setTimeout(function() {
-        qs('nav').classList.remove('no-opacity');
-        qs('.am-content-container').classList.remove('no-opacity','right-20');
-        qs('.am-picture-container').classList.remove('no-opacity','left-20');
-      }, 1000)
+      // qs('.splash-content').classList.add('no-opacity');
+      // qs('main').classList.add('set-right');
+      qs('nav').classList.remove('no-opacity');
+      qs('.am-content-container').classList.remove('no-opacity','right-20');
+      qs('.am-picture-container').classList.remove('no-opacity','left-20');
     }, 300);
   }
 
