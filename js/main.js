@@ -1,39 +1,13 @@
 "use strict";
 (function() {
 
-  
-  document.addEventListener('DOMContentLoaded', function() {
-    if(typeof(Storage) !== 'undefined') {
-        // See if there is a scroll pos and go there.
-        var lastYPos = +localStorage.getItem('scrollYPos');
-        if (lastYPos) {
-            console.log('Setting scroll pos to:', lastYPos);
-            window.scrollTo(0, lastYPos);
-        }
-
-        // On navigating away first save the position.
-        var anchors = qsa('a');
-
-        var onNavClick = function() {
-            console.log('Saving scroll pos to:', window.scrollY);
-            localStorage.setItem('scrollYPos', window.scrollY);
-        };
-
-        for (var i = 0; i < anchors.length; i++) {
-            anchors[i].addEventListener('click', onNavClick);
-        }
-    }
-  });
-
   window.addEventListener("load", init);
 
   let NAV_TIMEOUT;
   let NAV_TIMEOUT2;
 
   function init() { 
-    // setTimeout(function() {
-    //   qs('.splash-content').classList.toggle('no-opacity');
-    // }, 1000);
+
     showMainPage();
     window.addEventListener("unload", function () {
       localStorage.setItem('scrollYPos', 0);
@@ -81,18 +55,14 @@
   function showMainPage() {
     transitionToMain();
     setupObservers();
-    setupNav();
     setupLazyLoader();
     setupTechnologyItems(); 
     setupTechCardBtns();
-    setupProjectButtons()
-    navStayDown();
+    setupProjectButtons();
   }
 
   function transitionToMain() {
     setTimeout(function() {
-      // qs('.splash-content').classList.add('no-opacity');
-      // qs('main').classList.add('set-right');
       qs('nav').classList.remove('no-opacity');
       qs('.am-content-container').classList.remove('no-opacity','right-20');
       qs('.am-picture-container').classList.remove('no-opacity','left-20');
@@ -186,12 +156,9 @@
           if (!entry.isIntersecting) {
             nav.classList.remove('nav-scrolled');
             qs('.logo').src = 'imgs/icons/logo-icon.svg';
-            nav.removeEventListener('mouseleave', hideNav);
           } else {
             nav.classList.add('nav-scrolled');
             qs('.logo').src = 'imgs/icons/logo-icon-white.svg';
-            nav.addEventListener('mouseenter', clearNav);
-            nav.addEventListener('mouseleave', hideNav);
           } 
         });
       }, options
@@ -270,32 +237,6 @@
       }, options
     );
     return observer;
-  }
-
-  function navStayDown() {
-    let containers = qsa('technology-item');
-    let nav = qs('nav');
-    containers.forEach(element => {
-      element.addEventListener('click', function() {
-        nav.classList.remove('nav-scrolled');
-      });
-    });
-  }
-
-  function setupNav() {
-    let nav = qs('nav');
-
-    let previousY = 0;
-
-    let main = qs('main');
-    setInterval(() => {
-      if (main.scrollTop != previousY) {
-        window.requestAnimationFrame(() => {
-          toggleNavState(previousY);
-        });
-        previousY = main.scrollTop;
-      }
-    }, 10);
   }
   
   function setupProjectButtons() {

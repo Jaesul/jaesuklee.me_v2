@@ -203,9 +203,9 @@ h3 {
   color: rgb(40, 40, 40);
 }
 
-.info-small p {
+/* .info-small p {
   color: white;
-}
+} */
 
 .info-small .info-card {
   border-radius: 5px;
@@ -242,7 +242,7 @@ h3 {
 }
 
 .project-details .full-img-container {
-  width: 50%;
+  width: 70%;
   position: relative;
   border-radius: 5px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
@@ -252,7 +252,7 @@ h3 {
 .project-details .full-img-container::after {
   content: "";
   display: block;
-  padding-bottom: 75%;
+  padding-bottom: 50%;
 }
 
 .project-details h2 + p {
@@ -303,7 +303,8 @@ h3 {
 }
 
 .project-item .content section h3 {
-  font-size: 1.3em
+  font-size: 1.6em;
+  margin-bottom: 1.4em;
 }
 
 .project-item .content section h4 {

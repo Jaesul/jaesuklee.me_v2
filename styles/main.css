@@ -188,7 +188,7 @@ main {
   position: relative;
   width: 100%;
   background: white;
-  overflow: auto;
+  overflow: hidden auto;
 }
 
 nav {
@@ -445,35 +445,6 @@ li {
   text-align: center;
   letter-spacing: 1px;
 }
-
-/* .width-50-container {
-  align-items: flex-start;
-  width: 44%;
-  text-align: center;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-.technology-item {
-  padding: 1.4em;
-  color: rgb(60, 60, 60);
-  width: 30%;
-  margin-bottom: 2.5vw;
-  height: 16em;
-  border-radius: 8px;
-  background-color: white;
-}
-
-.technology-item .icon {
-  width: 30%;
-  margin: auto;
-  padding: 0;
-}
-
-.technology-item img {
-  width: 100%;
-} */
 
 .project-card-container {
   display: flex;
